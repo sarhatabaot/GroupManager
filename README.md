@@ -1,2 +1,2 @@
-# GroupManager
-GroupManager++
+# GroupManager++
+An updated fork of Essentials GroupManager
