@@ -76,11 +76,11 @@ public class GroupVariables extends Variables implements Cloneable {
 			this.variables.remove(name);
 		} catch (Exception e) {
 		}
-		if (name.equals("prefix")) {
+		if ("prefix".equals(name)) {
 			addVar("prefix", "");
-		} else if (name.equals("suffix")) {
+		} else if ("suffix".equals(name)) {
 			addVar("suffix", "");
-		} else if (name.equals("build")) {
+		} else if ("build".equals(name)) {
 			addVar("build", false);
 		}
 		owner.flagAsChanged();
