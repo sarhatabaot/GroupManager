@@ -7,7 +7,7 @@ package org.anjocaido.groupmanager;
 import org.anjocaido.groupmanager.permissions.AnjoPermissionsHandler;
 import org.anjocaido.groupmanager.permissions.BukkitPermissions;
 import org.anjocaido.groupmanager.utils.GroupManagerPermissions;
-import org.anjocaido.groupmanager.Tasks.BukkitPermsUpdateTask;
+import org.anjocaido.groupmanager.tasks.BukkitPermsUpdateTask;
 import org.anjocaido.groupmanager.data.Variables;
 import org.anjocaido.groupmanager.data.User;
 import org.anjocaido.groupmanager.data.Group;

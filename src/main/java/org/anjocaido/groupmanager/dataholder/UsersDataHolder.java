@@ -23,14 +23,7 @@ public class UsersDataHolder {
 	/**
 	 * The actual groups holder
 	 */
-	private final Map<String, User> users = Collections.synchronizedMap(new HashMap<String, User>());
-
-	/**
-	 * Constructor
-	 */
-	protected UsersDataHolder() {
-
-	}
+	private final Map<String, User> users = Collections.synchronizedMap(new HashMap<>());
 
 	public void setDataSource(WorldDataHolder dataSource) {
 
@@ -82,7 +75,7 @@ public class UsersDataHolder {
 	/**
 	 * @return the haveUsersChanged
 	 */
-	public boolean HaveUsersChanged() {
+	public boolean haveUsersChanged() {
 
 		return haveUsersChanged;
 	}

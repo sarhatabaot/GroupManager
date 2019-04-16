@@ -24,17 +24,9 @@ public class GroupsDataHolder {
 	/**
 	 * The actual groups holder
 	 */
-	private final Map<String, Group> groups = Collections.synchronizedMap(new HashMap<String, Group>());
-
-	/**
-	 * Constructor
-	 */
-	protected GroupsDataHolder() {
-
-	}
+	private final Map<String, Group> groups = Collections.synchronizedMap(new HashMap<>());
 
 	public void setDataSource(WorldDataHolder dataSource) {
-
 		this.dataSource = dataSource;
 		//push this data source to the users, so they pull the correct groups data.
 		synchronized(groups) {
@@ -44,7 +36,6 @@ public class GroupsDataHolder {
 	}
 	
 	public WorldDataHolder getDataSource() {
-
 		return this.dataSource;
 	}
 
@@ -99,7 +90,7 @@ public class GroupsDataHolder {
 	/**
 	 * @return the haveGroupsChanged
 	 */
-	public boolean HaveGroupsChanged() {
+	public boolean haveGroupsChanged() {
 
 		return haveGroupsChanged;
 	}

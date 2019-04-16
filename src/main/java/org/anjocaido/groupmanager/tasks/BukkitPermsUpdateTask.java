@@ -1,4 +1,4 @@
-package org.anjocaido.groupmanager.Tasks;
+package org.anjocaido.groupmanager.tasks;
 
 import org.anjocaido.groupmanager.GroupManager;
 
