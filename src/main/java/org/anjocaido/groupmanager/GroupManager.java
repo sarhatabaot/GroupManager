@@ -12,7 +12,7 @@ import org.anjocaido.groupmanager.data.Variables;
 import org.anjocaido.groupmanager.data.User;
 import org.anjocaido.groupmanager.data.Group;
 import org.anjocaido.groupmanager.dataholder.OverloadedWorldHolder;
-import org.anjocaido.groupmanager.metrics.Metrics;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -32,6 +32,7 @@ import org.anjocaido.groupmanager.events.GroupManagerEventHandler;
 import org.anjocaido.groupmanager.utils.GMLoggerHandler;
 import org.anjocaido.groupmanager.utils.PermissionCheckResult;
 import org.anjocaido.groupmanager.utils.Tasks;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
@@ -89,12 +90,7 @@ public class GroupManager extends JavaPlugin {
 		/*
 		 * Register Metrics
 		 */
-		try {
-		    Metrics metrics = new Metrics(this);
-		    metrics.start();
-		} catch (IOException e) {
-			System.err.println("[GroupManager] Error setting up metrics");
-		}
+		Metrics metrics = new Metrics(this);
 		
 		/*
 		 * Initialize the event handler
