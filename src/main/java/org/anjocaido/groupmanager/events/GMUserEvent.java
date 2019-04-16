@@ -7,82 +7,69 @@ import org.bukkit.event.HandlerList;
 
 /**
  * @author ElgarL
- * 
  */
 public class GMUserEvent extends Event {
+    protected User user;
+    protected String userName;
+    protected Action action;
 
-	/**
-	 * 
-	 */
-	private static final HandlerList handlers = new HandlerList();
+    private static final HandlerList handlers = new HandlerList();
 
-	@Override
-	public HandlerList getHandlers() {
+    @Override
+    public HandlerList getHandlers() {
 
-		return handlers;
-	}
+        return handlers;
+    }
 
-	public static HandlerList getHandlerList() {
+    public static HandlerList getHandlerList() {
 
-		return handlers;
-	}
+        return handlers;
+    }
 
-	//////////////////////////////
+    public GMUserEvent(User user, Action action) {
+        super();
 
-	protected User user;
+        this.user = user;
+        this.action = action;
+        this.userName = user.getLastName();
+    }
 
-	protected String userName;
+    public GMUserEvent(String userName, Action action) {
+        super();
 
-	protected Action action;
+        this.userName = userName;
+        this.action = action;
+    }
 
-	public GMUserEvent(User user, Action action) {
+    public Action getAction() {
+        return this.action;
+    }
 
-		super();
+    public User getUser() {
+        return user;
+    }
 
-		this.user = user;
-		this.action = action;
-		this.userName = user.getLastName();
-	}
+    public String getUserName() {
 
-	public GMUserEvent(String userName, Action action) {
+        return userName;
+    }
 
-		super();
+    public enum Action {
+        USER_PERMISSIONS_CHANGED, USER_INHERITANCE_CHANGED, USER_INFO_CHANGED, USER_GROUP_CHANGED, USER_SUBGROUP_CHANGED, USER_ADDED, USER_REMOVED
+    }
 
-		this.userName = userName;
-		this.action = action;
-	}
+    public void schedule(final GMUserEvent event) {
 
-	public Action getAction() {
+        synchronized (GroupManager.getGMEventHandler().getServer()) {
+            if (GroupManager.getGMEventHandler().getServer().getScheduler().scheduleSyncDelayedTask(GroupManager.getGMEventHandler().getPlugin(), new Runnable() {
 
-		return this.action;
-	}
+                @Override
+                public void run() {
 
-	public User getUser() {
-
-		return user;
-	}
-
-	public String getUserName() {
-
-		return userName;
-	}
-
-	public enum Action {
-		USER_PERMISSIONS_CHANGED, USER_INHERITANCE_CHANGED, USER_INFO_CHANGED, USER_GROUP_CHANGED, USER_SUBGROUP_CHANGED, USER_ADDED, USER_REMOVED,
-	}
-
-	public void schedule(final GMUserEvent event) {
-
-		synchronized (GroupManager.getGMEventHandler().getServer()) {
-			if (GroupManager.getGMEventHandler().getServer().getScheduler().scheduleSyncDelayedTask(GroupManager.getGMEventHandler().getPlugin(), new Runnable() {
-	
-				@Override
-				public void run() {
-	
-					GroupManager.getGMEventHandler().getServer().getPluginManager().callEvent(event);
-				}
-			}, 1) == -1)
-				GroupManager.logger.warning("Could not schedule GM Event.");
-		}
-	}
+                    GroupManager.getGMEventHandler().getServer().getPluginManager().callEvent(event);
+                }
+            }, 1) == -1)
+                GroupManager.logger.warning("Could not schedule GM Event.");
+        }
+    }
 }

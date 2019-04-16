@@ -12,10 +12,8 @@ import org.bukkit.Server;
  * 
  */
 public class GroupManagerEventHandler {
-	
 	private final Server server;
 	private final GroupManager plugin;
-	
 
 	public GroupManagerEventHandler(GroupManager plugin) {
 		

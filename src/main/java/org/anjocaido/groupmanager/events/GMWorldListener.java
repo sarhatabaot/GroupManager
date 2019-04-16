@@ -13,7 +13,6 @@ import org.bukkit.event.world.WorldInitEvent;
  * 
  */
 public class GMWorldListener implements Listener {
-
 	private final GroupManager plugin;
 
 	public GMWorldListener(GroupManager instance) {

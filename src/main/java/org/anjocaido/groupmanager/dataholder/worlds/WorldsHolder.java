@@ -33,7 +33,7 @@ public class WorldsHolder {
 	/**
 	 * Map with instances of loaded worlds.
 	 */
-	private Map<String, OverloadedWorldHolder> worldsData = new HashMap<String, OverloadedWorldHolder>();
+	private Map<String, OverloadedWorldHolder> worldsData = new HashMap<>();
 
 	/**
 	 * Map of mirrors: <nonExistingWorldName, existingAndLoadedWorldName>
@@ -42,19 +42,14 @@ public class WorldsHolder {
 	 * 
 	 * Mirror shows the same data of mirrored.
 	 */
-	private Map<String, String> mirrorsGroup = new HashMap<String, String>();
-	private Map<String, String> mirrorsUser = new HashMap<String, String>();
+	private Map<String, String> mirrorsGroup = new HashMap<>();
+	private Map<String, String> mirrorsUser = new HashMap<>();
 
 	private String serverDefaultWorldName;
 	private GroupManager plugin;
 	private File worldsFolder;
 
-	/**
-	 * 
-	 * @param plugin
-	 */
 	public WorldsHolder(GroupManager plugin) {
-
 		this.plugin = plugin;
 		resetWorldsHolder();
 	}
@@ -63,7 +58,6 @@ public class WorldsHolder {
 	 * @return the mirrorsGroup
 	 */
 	public Map<String, String> getMirrorsGroup() {
-	
 		return mirrorsGroup;
 	}
 
@@ -72,20 +66,17 @@ public class WorldsHolder {
 	 * @return the mirrorsUser
 	 */
 	public Map<String, String> getMirrorsUser() {
-	
 		return mirrorsUser;
 	}
 	
 	public boolean isWorldKnown(String name) {
-		
 		return worldsData.containsKey(name.toLowerCase());
 	}
 	
 	public void resetWorldsHolder() {
-		
-		worldsData = new HashMap<String, OverloadedWorldHolder>();
-		mirrorsGroup = new HashMap<String, String>();
-		mirrorsUser = new HashMap<String, String>();
+		worldsData = new HashMap<>();
+		mirrorsGroup = new HashMap<>();
+		mirrorsUser = new HashMap<>();
 		
 		// Setup folders and check files exist for the primary world
 		verifyFirstRun();
@@ -164,14 +155,12 @@ public class WorldsHolder {
 		}
 	}
 
-	@SuppressWarnings("rawtypes")
 	public void mirrorSetUp() {
-
 		mirrorsGroup.clear();
 		mirrorsUser.clear();
 		Map<String, Object> mirrorsMap = plugin.getGMConfig().getMirrorsMap();
 
-		HashSet<String> mirroredWorlds = new HashSet<String>();
+		HashSet<String> mirroredWorlds = new HashSet<>();
 
 		if (mirrorsMap != null) {
 			for (String source : mirrorsMap.keySet()) {
@@ -260,15 +249,12 @@ public class WorldsHolder {
 		}
 	}
 
-	/**
-     *
-     */
-	public void reloadAll() {
 
+	public void reloadAll() {
 		// Load global groups
 		GroupManager.getGlobalGroups().load();
 
-		ArrayList<WorldDataHolder> alreadyDone = new ArrayList<WorldDataHolder>();
+		ArrayList<WorldDataHolder> alreadyDone = new ArrayList<>();
 		for (WorldDataHolder w : worldsData.values()) {
 			if (alreadyDone.contains(w)) {
 				continue;
@@ -300,7 +286,6 @@ public class WorldsHolder {
 	 * (call this function to auto overwrite files)
 	 */
 	public void saveChanges() {
-
 		saveChanges(true);
 	}
 
@@ -308,9 +293,8 @@ public class WorldsHolder {
      *
      */
 	public boolean saveChanges(boolean overwrite) {
-
 		boolean changed = false;
-		ArrayList<WorldDataHolder> alreadyDone = new ArrayList<WorldDataHolder>();
+		ArrayList<WorldDataHolder> alreadyDone = new ArrayList<>();
 		Tasks.removeOldFiles(plugin, plugin.getBackupFolder());
 
 		// Write Global Groups
@@ -387,7 +371,7 @@ public class WorldsHolder {
 	/**
 	 * Backup the Groups/Users file
 	 * 
-	 * @param w
+	 * @param w		OverloadedWorldHolder
 	 * @param groups
 	 */
 	private void backupFile(OverloadedWorldHolder w, Boolean groups) {

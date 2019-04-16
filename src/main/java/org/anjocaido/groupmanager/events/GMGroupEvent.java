@@ -10,10 +10,10 @@ import org.bukkit.event.HandlerList;
  * 
  */
 public class GMGroupEvent extends Event {
+	protected Group group;
+	protected String groupName;
+	protected Action action;
 
-	/**
-	 * 
-	 */
 	private static final HandlerList handlers = new HandlerList();
 
 	@Override
@@ -27,16 +27,7 @@ public class GMGroupEvent extends Event {
 		return handlers;
 	}
 
-	//////////////////////////////
-
-	protected Group group;
-
-	protected String groupName;
-
-	protected Action action;
-
 	public GMGroupEvent(Group group, Action action) {
-
 		super();
 
 		this.group = group;
@@ -45,7 +36,6 @@ public class GMGroupEvent extends Event {
 	}
 
 	public GMGroupEvent(String groupName, Action action) {
-
 		super();
 
 		this.groupName = groupName;
@@ -68,14 +58,12 @@ public class GMGroupEvent extends Event {
 	}
 
 	public enum Action {
-		GROUP_PERMISSIONS_CHANGED, GROUP_INHERITANCE_CHANGED, GROUP_INFO_CHANGED, GROUP_ADDED, GROUP_REMOVED,
+		GROUP_PERMISSIONS_CHANGED, GROUP_INHERITANCE_CHANGED, GROUP_INFO_CHANGED, GROUP_ADDED, GROUP_REMOVED
 	}
 
 	public void schedule(final GMGroupEvent event) {
-
 		synchronized (GroupManager.getGMEventHandler().getServer()) {
 			if (GroupManager.getGMEventHandler().getServer().getScheduler().scheduleSyncDelayedTask(GroupManager.getGMEventHandler().getPlugin(), new Runnable() {
-	
 				@Override
 				public void run() {
 	
