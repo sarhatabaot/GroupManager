@@ -76,7 +76,6 @@ public class WorldDataHolder {
 	 * @param worldName
 	 */
 	public WorldDataHolder(String worldName) {
-
 		name = worldName;
 	}
 
@@ -88,7 +87,6 @@ public class WorldDataHolder {
 	 * @param users
 	 */
 	public WorldDataHolder(String worldName, GroupsDataHolder groups, UsersDataHolder users) {
-
 		this.name = worldName;
 		this.groups = groups;
 		this.users = users;

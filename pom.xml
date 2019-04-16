@@ -6,7 +6,7 @@
 
     <groupId>org.anjocaido.groupmanager</groupId>
     <artifactId>GroupManager</artifactId>
-    <version>2.0.1-1.13</version>
+    <version>3.0.0-1.13</version>
 
     <build>
         <defaultGoal>clean package</defaultGoal>

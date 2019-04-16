@@ -15,7 +15,6 @@ public class GroupVariables extends Variables implements Cloneable {
 	private Group owner;
 
 	public GroupVariables(Group owner) {
-
 		super(owner);
 		this.owner = owner;
 		addVar("prefix", "");

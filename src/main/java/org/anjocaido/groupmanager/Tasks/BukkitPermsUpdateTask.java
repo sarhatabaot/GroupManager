@@ -9,14 +9,8 @@ import org.anjocaido.groupmanager.GroupManager;
 
 public class BukkitPermsUpdateTask implements Runnable {
 
-	public BukkitPermsUpdateTask() {
-
-		super();
-	}
-
 	@Override
 	public void run() {
-
 		// Signal loaded and update BukkitPermissions.
 		GroupManager.setLoaded(true);
 		GroupManager.BukkitPermissions.collectPermissions();
