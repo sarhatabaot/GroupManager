@@ -62,14 +62,14 @@ public class BukkitPermissions {
 	/**
 	 * @return the player_join
 	 */
-	public boolean isPlayer_join() {
+	public boolean isPlayerJoin() {
 		return player_join;
 	}
 
 	/**
 	 * @param player_join the player_join to set
 	 */
-	public void setPlayer_join(boolean player_join) {
+	public void setPlayerJoin(boolean player_join) {
 		this.player_join = player_join;
 	}
 
@@ -421,10 +421,8 @@ public class BukkitPermissions {
 
 		@EventHandler(priority = EventPriority.LOWEST)
 		public void onPlayerJoin(PlayerJoinEvent event) {
-
 			
-			
-			setPlayer_join(true);
+			setPlayerJoin(true);
 			Player player = event.getPlayer();
 			
 			GroupManager.logger.finest("Player Join event: " + player.getName());
@@ -437,10 +435,10 @@ public class BukkitPermissions {
 			// force GM to create the player if they are not already listed.
 			plugin.getWorldsHolder().getWorldData(player.getWorld().getName()).getUser(player.getUniqueId().toString(), player.getName());
 			
-			setPlayer_join(false);
+			setPlayerJoin(false);
 			updatePermissions(event.getPlayer());
 				
-			setPlayer_join(false);
+			setPlayerJoin(false);
 		}
 
 		@EventHandler(priority = EventPriority.LOWEST)

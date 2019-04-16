@@ -179,7 +179,7 @@ public class User extends DataUnit implements Cloneable {
 		this.group = group.getName();
 		flagAsChanged();
 		if (GroupManager.isLoaded()) {
-			if (!GroupManager.BukkitPermissions.isPlayer_join() && (updatePerms))
+			if (!GroupManager.BukkitPermissions.isPlayerJoin() && (updatePerms))
 				GroupManager.BukkitPermissions.updatePlayer(getBukkitPlayer());
 
 			// Do we notify of the group change?
@@ -215,7 +215,7 @@ public class User extends DataUnit implements Cloneable {
 		subGroups.add(subGroup.getName());
 		flagAsChanged();
 		if (GroupManager.isLoaded()) {
-			if (!GroupManager.BukkitPermissions.isPlayer_join())
+			if (!GroupManager.BukkitPermissions.isPlayerJoin())
 				GroupManager.BukkitPermissions.updatePlayer(getBukkitPlayer());
 			GroupManager.getGMEventHandler().callEvent(this, Action.USER_SUBGROUP_CHANGED);
 		}
@@ -247,7 +247,7 @@ public class User extends DataUnit implements Cloneable {
 			if (subGroups.remove(subGroup.getName())) {
 				flagAsChanged();
 				if (GroupManager.isLoaded())
-					if (!GroupManager.BukkitPermissions.isPlayer_join())
+					if (!GroupManager.BukkitPermissions.isPlayerJoin())
 						GroupManager.BukkitPermissions.updatePlayer(getBukkitPlayer());
 				GroupManager.getGMEventHandler().callEvent(this, Action.USER_SUBGROUP_CHANGED);
 				return true;
@@ -300,7 +300,7 @@ public class User extends DataUnit implements Cloneable {
 		}
 		flagAsChanged();
 		if (GroupManager.isLoaded()) {
-			//if (!GroupManager.BukkitPermissions.isPlayer_join())
+			//if (!GroupManager.BukkitPermissions.isPlayerJoin())
 			//	GroupManager.BukkitPermissions.updatePlayer(this.getName());
 			GroupManager.getGMEventHandler().callEvent(this, Action.USER_INFO_CHANGED);
 		}
