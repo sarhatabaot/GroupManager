@@ -131,7 +131,6 @@ public abstract class Tasks {
 	}
 
 	public static String getStringArrayInString(String[] list) {
-
 		if (list == null) {
 			return "";
 		}
@@ -146,7 +145,6 @@ public abstract class Tasks {
 	}
 
 	public static String getGroupListInString(List<Group> list) {
-
 		if (list == null) {
 			return "";
 		}
@@ -161,10 +159,9 @@ public abstract class Tasks {
 	}
 
 	public static String join(String[] arr, String separator) {
-
 		if (arr.length == 0)
 			return "";
-		String out = arr[0].toString();
+		String out = arr[0];
 		for (int i = 1; i < arr.length; i++)
 			out += separator + arr[i];
 		return out;
