@@ -93,13 +93,11 @@ public abstract class Tasks {
 		if (folder.isDirectory()) {
 			long oldTime = System.currentTimeMillis() - (((long) gm.getGMConfig().getBackupDuration() * 60 * 60) * 1000);
 			for (File olds : folder.listFiles()) {
-				if (olds.isFile()) {
-					if (olds.lastModified() < oldTime) {
+				if (olds.isFile() && olds.lastModified() < oldTime) {
 						try {
 							olds.delete();
 						} catch (Exception e) {
 						}
-					}
 				}
 			}
 		}
