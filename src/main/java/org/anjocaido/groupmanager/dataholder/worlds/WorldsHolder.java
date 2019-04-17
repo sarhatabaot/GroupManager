@@ -731,7 +731,7 @@ public class WorldsHolder {
 	 */
 	public ArrayList<OverloadedWorldHolder> allWorldsDataList() {
 
-		ArrayList<OverloadedWorldHolder> list = new ArrayList<OverloadedWorldHolder>();
+		ArrayList<OverloadedWorldHolder> list = new ArrayList<>();
 
 		for (String world : worldsData.keySet()) {
 

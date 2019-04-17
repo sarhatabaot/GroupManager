@@ -78,6 +78,7 @@ public class GroupManager extends JavaPlugin {
 
     private String lastError = "";
 
+
     @Override
     public void onDisable() {
         onDisable(false);

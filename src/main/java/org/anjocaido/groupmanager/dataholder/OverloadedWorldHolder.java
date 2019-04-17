@@ -20,7 +20,7 @@ public class OverloadedWorldHolder extends WorldDataHolder {
 	/**
      *
      */
-	protected final Map<String, User> overloadedUsers = Collections.synchronizedMap(new HashMap<String, User>());
+	protected final Map<String, User> overloadedUsers = Collections.synchronizedMap(new HashMap<>());
 
 	/**
 	 * 
@@ -37,7 +37,7 @@ public class OverloadedWorldHolder extends WorldDataHolder {
 
 	/**
 	 * 
-	 * @param userName
+	 * @param userId
 	 * @return user object or a new user if none exists.
 	 */
 	@Override

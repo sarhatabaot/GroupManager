@@ -64,7 +64,7 @@ public class WorldDataHolder {
 	/**
 	 * List of UUID's associated with this user name.
 	 */
-	protected static Map<String, Set<String>> nameToUUIDLookup = new TreeMap<String, Set<String>>();
+	protected static Map<String, Set<String>> nameToUUIDLookup = new TreeMap<>();
 	/**
      *
      */
@@ -203,7 +203,7 @@ public class WorldDataHolder {
 	public void addUser(User theUser) {
 
 		if (theUser.getDataSource() != this) {
-			theUser = theUser.clone(this);
+			theUser = theUser.clone(this); //??
 		}
 		if (theUser == null) {
 			return;
@@ -412,7 +412,7 @@ public class WorldDataHolder {
 	public Collection<Group> getGroupList() {
 
 		synchronized (getGroups()) {
-			return new ArrayList<Group>(getGroups().values());
+			return new ArrayList<>(getGroups().values());
 		}
 	}
 
@@ -423,7 +423,7 @@ public class WorldDataHolder {
 	public Collection<User> getUserList() {
 
 		synchronized (getUsers()) {
-			return new ArrayList<User>(getUsers().values());
+			return new ArrayList<>(getUsers().values());
 		}
 	}
 
@@ -580,7 +580,7 @@ public class WorldDataHolder {
 		}
 		FileInputStream groupsInputStream = new FileInputStream(groupsFile);
 		try {
-			groupsRootDataNode = (Map<String, Object>) yamlGroups.load(new UnicodeReader(groupsInputStream));
+			groupsRootDataNode = yamlGroups.load(new UnicodeReader(groupsInputStream));
 			if (groupsRootDataNode == null) {
 				throw new NullPointerException();
 			}
@@ -592,7 +592,7 @@ public class WorldDataHolder {
 
 		// PROCESS GROUPS FILE
 
-		Map<String, List<String>> inheritance = new HashMap<String, List<String>>();
+		Map<String, List<String>> inheritance = new HashMap<>();
 		Map<String, Object> allGroupsNode = null;
 
 		/*
@@ -1138,13 +1138,13 @@ public class WorldDataHolder {
 		synchronized (ph.getUsers()) {
 			
 			// A sorted list of users.
-			for (String userKey : new TreeSet<String>(ph.getUsers().keySet())) {
+			for (String userKey : new TreeSet<>(ph.getUsers().keySet())) {
 				User user = ph.getUsers().get(userKey);
 				if ((user.getGroup() == null || user.getGroup().equals(ph.getDefaultGroup())) && user.getPermissionList().isEmpty() && user.getVariables().isEmpty() && user.isSubGroupsEmpty()) {
 					continue;
 				}
 
-				LinkedHashMap<String, Object> aUserMap = new LinkedHashMap<String, Object>();
+				LinkedHashMap<String, Object> aUserMap = new LinkedHashMap<>();
 				usersMap.put(user.getUUID(), aUserMap);
 
 				if (!user.getUUID().equalsIgnoreCase(user.getLastName())) {
@@ -1504,11 +1504,8 @@ public class WorldDataHolder {
 	 * @param UUID 
 	 */
 	public void removeUUIDLookup(String name, String UUID) {
-		
 		if (nameToUUIDLookup.containsKey(name.toLowerCase())) {
-			
 			Set<String> lookup = getUUIDLookup(name.toLowerCase());
-			
 			lookup.remove(UUID);
 			
 			if (lookup.isEmpty()) {
